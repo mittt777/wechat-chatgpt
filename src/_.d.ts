@@ -1,0 +1,3 @@
+type Env = {
+  KV: NAMESPACE
+}

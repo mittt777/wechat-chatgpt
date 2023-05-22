@@ -1,0 +1,7 @@
+name = "wechat-chatgpt"
+main = "src/index.ts"
+compatibility_date = "2023-05-22"
+
+kv_namespaces = [
+  { binding = "KV", id = "69da8d3b4a8d49caa4e2872f879da5da", preview_id = "69da8d3b4a8d49caa4e2872f879da5da" }
+]
