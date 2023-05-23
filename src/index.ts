@@ -1,5 +1,6 @@
 import checkSignature from './utils/check-signature'
-import { buildXml, parseXml } from './utils/xml-handler';
+import { buildXml, parseXml } from './utils/xml-handler'
+import getOpenaiRes from './lib/openai'
 
 export default {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
@@ -15,7 +16,7 @@ export default {
   
       switch (message.MsgType) {
         case 'text':
-          (replyMessage as WeChatMessageText).Content = 'hello'
+          (replyMessage as WeChatMessageText).Content = await getOpenaiRes((message as WeChatMessageText).Content, env)
           replyXml = buildXml(replyMessage as WeChatMessageText)
           break;
         case 'voice':
