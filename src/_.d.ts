@@ -19,6 +19,7 @@ interface WeChatMessageReceivedImage extends WeChatMessage {
 
 interface WeChatMessageReceivedVoice extends WeChatMessage {
   MediaId: string
+  Recognition: string
 }
 
 interface WeChatMessageSendImage extends WeChatMessage {
