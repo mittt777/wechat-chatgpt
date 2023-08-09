@@ -3,6 +3,8 @@ import { buildXml, parseXml } from './utils/xml-handler'
 import getOpenaiRes from './lib/openai'
 import getBoredAct from './lib/bored'
 
+const API_SOURCE = 'openai' // openai | bored
+
 export default {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     if (request.headers.get('content-type') === 'text/xml') {
@@ -17,8 +19,12 @@ export default {
   
       switch (message.MsgType) {
         case 'text':
-          // (replyMessage as WeChatMessageText).Content = await getOpenaiRes((message as WeChatMessageText).Content, env)
-          (replyMessage as WeChatMessageText).Content = await getBoredAct()
+          if (API_SOURCE === 'openai') {
+            (replyMessage as WeChatMessageText).Content = await getOpenaiRes((message as WeChatMessageText).Content, env)
+          } else if (API_SOURCE === 'bored') {
+            (replyMessage as WeChatMessageText).Content = await getBoredAct()
+          }
+
           replyXml = buildXml(replyMessage as WeChatMessageText)
           break;
         case 'voice':
