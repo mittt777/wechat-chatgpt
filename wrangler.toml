@@ -3,5 +3,5 @@ main = "src/index.ts"
 compatibility_date = "2023-05-22"
 
 kv_namespaces = [
-  { binding = "KV", id = "69da8d3b4a8d49caa4e2872f879da5da", preview_id = "69da8d3b4a8d49caa4e2872f879da5da" }
+  { binding = "KV", id = "2097a73a271e4ebda65d303915b5af65", preview_id = "2097a73a271e4ebda65d303915b5af65" }
 ]
